@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "553386859260",
+    "firebase_url": "https://salesreport-53df2.firebaseio.com",
+    "project_id": "salesreport-53df2",
+    "storage_bucket": "salesreport-53df2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:553386859260:android:f5f2dc58483cce12165579",
+        "android_client_info": {
+          "package_name": "com.andoiddevop.salereport"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "553386859260-parkq0foji3r0gi8k8hotb2eic3n99cq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.andoiddevop.salereport",
+            "certificate_hash": "db132caef2a27e9600c8b8b9c50ccba16ce0a6ac"
+          }
+        },
+        {
+          "client_id": "553386859260-f4v4ilml9f2b4q6k21n6g8gicgnqm848.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBA6_T99b0p5_7p84jwQqozlW_ZBNxu33o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "553386859260-f4v4ilml9f2b4q6k21n6g8gicgnqm848.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.activity.MainActivity">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonSales"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_150sdp"
+        android:backgroundTint="@color/colorButtonSales"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/sales"
+        android:includeFontPadding="false"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/_16ssp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonReport"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_150sdp"
+        android:layout_below="@+id/buttonSales"
+        android:textSize="@dimen/_16ssp"
+        android:fontFamily="@font/montserrat"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:backgroundTint="@color/colorButtonReport"
+        android:text="@string/report" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonMaster"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_150sdp"
+        android:fontFamily="@font/montserrat"
+        android:layout_below="@+id/buttonReport"
+        android:textSize="@dimen/_16ssp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:backgroundTint="@color/colorButtonMaster"
+        android:textColor="@android:color/white"
+        android:text="@string/master" />
+
+</RelativeLayout>

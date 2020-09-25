@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".view.activity.ItemDetailActivity">
+
+        <LinearLayout
+            android:id="@+id/FirstLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingEnd="@dimen/_10sdp"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingBottom="@dimen/_20sdp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:fontFamily="@font/montserrat"
+                android:text="Groups:"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_14sdp" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/GroupCardView"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:elevation="1dp"
+                app:cardCornerRadius="10dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="@android:color/black"
+                android:innerRadius="0dp"
+                android:shape="ring"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                >
+                <Spinner
+                    android:id="@+id/Group_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="10dp"
+                    />
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <TextView
+                android:id="@+id/textViewItemName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:fontFamily="@font/montserrat"
+                android:text="Add Item:"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_14sdp" />
+
+            <EditText
+                android:id="@+id/inputItemName"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:background="@drawable/edittext_background"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:padding="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:inputType="text"
+                android:textAlignment="textStart"
+                android:layout_marginEnd="@dimen/_5sdp" />
+
+            <TextView
+                android:id="@+id/textViewUnit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:fontFamily="@font/montserrat"
+                android:text="Select Unit"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_14sdp" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/yourcardid"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:elevation="1dp"
+                app:cardCornerRadius="10dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="@android:color/black"
+                android:innerRadius="0dp"
+                android:shape="ring"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                >
+                <Spinner
+                    android:id="@+id/spinner_services"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="10dp"
+                    />
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/DoneButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Done"
+        android:fontFamily="sans-serif-medium"
+        android:includeFontPadding="false"
+        app:cornerRadius="@dimen/_10sdp"
+        android:onClick="DoneAddItem"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_below="@+id/FirstLayout"
+        android:layout_marginTop="@dimen/_150sdp"/>
+
+
+
+</RelativeLayout>
