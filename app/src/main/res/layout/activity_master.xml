@@ -8,12 +8,13 @@
 
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/colorButtonMaster"
         android:theme="@style/AppTheme.AppBarOverlay"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
@@ -30,17 +31,21 @@
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:tabTextColor="@android:color/white"
+            android:background="@color/colorButtonMaster"
             app:tabIndicatorColor="@android:color/holo_blue_bright"
             app:tabIndicatorHeight="@dimen/_3sdp"
-            android:background="@color/colorButtonMaster" />
+            app:tabTextColor="@android:color/white" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        android:layout_height="551dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/MainFab"
@@ -58,12 +63,12 @@
         android:id="@+id/GroupFab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_16sdp"
+        android:layout_marginBottom="@dimen/_30sdp"
         android:backgroundTint="@color/colorButtonMaster"
+        android:visibility="invisible"
         app:fabSize="mini"
         app:layout_constraintBottom_toTopOf="@+id/MainFab"
-        android:layout_marginBottom="@dimen/_30sdp"
-        android:layout_marginEnd="@dimen/_16sdp"
-        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_open_box" />
 
@@ -71,12 +76,12 @@
         android:id="@+id/ItemFab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/colorButtonMaster"
-        app:fabSize="mini"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/GroupFab"
-        android:layout_marginBottom="@dimen/_16sdp"
         android:layout_marginEnd="@dimen/_16sdp"
+        android:layout_marginBottom="@dimen/_16sdp"
+        android:backgroundTint="@color/colorButtonMaster"
+        android:visibility="invisible"
+        app:fabSize="mini"
+        app:layout_constraintBottom_toTopOf="@+id/GroupFab"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/list" />
 
@@ -84,18 +89,17 @@
         android:id="@+id/CreateGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Create Group"
-        app:layout_constraintEnd_toStartOf="@+id/GroupFab"
-        app:layout_constraintBottom_toBottomOf="@+id/GroupFab"
-        app:layout_constraintTop_toTopOf="@+id/GroupFab"
         android:layout_marginEnd="@dimen/_10sdp"
+        android:background="@drawable/fab_text_bg"
         android:paddingStart="@dimen/_16sdp"
         android:paddingTop="@dimen/_8sdp"
         android:paddingEnd="@dimen/_16sdp"
         android:paddingBottom="@dimen/_8sdp"
+        android:text="Create Group"
         android:visibility="invisible"
-        android:background="@drawable/fab_text_bg"
-        />
+        app:layout_constraintBottom_toBottomOf="@+id/GroupFab"
+        app:layout_constraintEnd_toStartOf="@+id/GroupFab"
+        app:layout_constraintTop_toTopOf="@+id/GroupFab" />
 
     <TextView
         android:id="@+id/AddItem"

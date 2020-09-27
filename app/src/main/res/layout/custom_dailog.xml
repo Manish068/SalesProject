@@ -12,14 +12,26 @@
 
 
     <EditText
-        android:id="@+id/inputStockName"
+        android:id="@+id/inputPartyName"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_40sdp"
         android:layout_marginStart="@dimen/_5sdp"
         android:layout_marginTop="@dimen/_5sdp"
         android:textAlignment="textStart"
         android:padding="@dimen/_10sdp"
-        android:hint="@string/group_name"
+        android:hint="@string/party_name"
+        android:background="@drawable/edittext_background"
+        android:layout_marginEnd="@dimen/_5sdp" />
+
+    <EditText
+        android:id="@+id/inputPartyNumber"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:textAlignment="textStart"
+        android:padding="@dimen/_10sdp"
+        android:hint="@string/party_number"
         android:background="@drawable/edittext_background"
         android:layout_marginEnd="@dimen/_5sdp" />
 

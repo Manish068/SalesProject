@@ -4,7 +4,6 @@ package com.andoiddevop.salereport.view.activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.animation.Animation;
@@ -12,32 +11,24 @@ import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import com.andoiddevop.salereport.R;
-import com.andoiddevop.salereport.ui.main.SectionsPagerAdapter;
-import com.andoiddevop.salereport.utils.Constants;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.andoiddevop.salereport.model.Users;
+import com.andoiddevop.salereport.adapter.SectionsPagerAdapter;
+import com.andoiddevop.salereport.view.CustomDialog.CustomDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MasterActivity extends AppCompatActivity {
+public class MasterActivity extends AppCompatActivity implements CustomDialog.CustomDialogListener {
 
     Window window;
     @BindView(R.id.MainFab)
@@ -52,8 +43,12 @@ public class MasterActivity extends AppCompatActivity {
     TextView AddItem;
     EditText inputStockName;
 
+    ViewPager viewPager;
+
+
     private Animation mFabOpenAnim, mFabCloseAnim;
     private boolean isOpen;
+    String Group;
 
 
     @Override
@@ -73,13 +68,17 @@ public class MasterActivity extends AppCompatActivity {
 
 
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
-        ViewPager viewPager = findViewById(R.id.view_pager);
+        viewPager = findViewById(R.id.view_pager);
         viewPager.setAdapter(sectionsPagerAdapter);
+
+
+
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
         FloatingActionButton fab = findViewById(R.id.MainFab);
 
-        tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+
+        /*tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
@@ -103,7 +102,7 @@ public class MasterActivity extends AppCompatActivity {
 
             }
         });
-
+*/
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabs));
 
 
@@ -115,7 +114,10 @@ public class MasterActivity extends AppCompatActivity {
                 switch (tabPosition) {
                     case 0:
 
-                        if (isOpen) {
+                        Intent itemActivity = new Intent(MasterActivity.this, ItemDetailActivity.class);
+                        startActivity(itemActivity);
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
+                       /* if (isOpen) {
                             GroupFab.setAnimation(mFabCloseAnim);
                             ItemFab.setAnimation(mFabCloseAnim);
 
@@ -129,30 +131,28 @@ public class MasterActivity extends AppCompatActivity {
                             CreateGroup.setVisibility(View.VISIBLE);
                             AddItem.setVisibility(View.VISIBLE);
                             isOpen = true;
-                        }
+                        }*/
                         break;
                     case 1:
-                        Snackbar.make(view, "Tab2", Snackbar.LENGTH_LONG)
-                                .setAction("Action", null).show();
+                        openDailog();
                         break;
                 }
             }
         });
 
 
-        GroupFab.setOnClickListener(v -> {
+        /*GroupFab.setOnClickListener(v -> {
 
             MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(MasterActivity.this);
             View mView = getLayoutInflater().inflate(R.layout.custom_dailog, null);
-            inputStockName=mView.findViewById(R.id.inputStockName);
+         //   inputStockName=mView.findViewById(R.id.inputStockName);
             builder.setView(mView);
             builder.setTitle("Create Group");
             builder.setPositiveButton("Done", (dialog, which) -> {
                 //Do something
 
                 Log.d("GROUP_NAME", "onCreate: "+inputStockName.getText().toString());
-                String Group=inputStockName.getText().toString();
-
+                Group=inputStockName.getText().toString();
 
 
             }).setNegativeButton("Cancel", (dialog, which) -> {
@@ -162,21 +162,39 @@ public class MasterActivity extends AppCompatActivity {
 
             builder.show();
 
-        });
+        });*/
 
-        ItemFab.setOnClickListener(new View.OnClickListener() {
+       /* ItemFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent itemActivity = new Intent(MasterActivity.this, ItemDetailActivity.class);
-                startActivity(itemActivity);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
+
             }
-        });
+        });*/
+    }
+//for opening dialog
+    private void openDailog() {
+        CustomDialog dialog = new CustomDialog();
+        dialog.show(getSupportFragmentManager(),"Example Dialog");
+
     }
 
     @Override
     public void finish() {
         super.finish();
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
+
+    @Override
+    public void applyTexts(String partyname, String partynumber) {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference=database.getInstance().getReference("Users");
+
+        if(partyname != null && partynumber != null){
+            Users users = new Users(partyname,partynumber);
+            databaseReference.child("parties").child(partynumber).setValue(users);
+            Toast.makeText(getApplicationContext(),"Done",Toast.LENGTH_SHORT).show();
+
+        }else
+            Toast.makeText(getApplicationContext(),"Fields are empty",Toast.LENGTH_SHORT).show();
     }
 }

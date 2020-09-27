@@ -10,4 +10,9 @@
     <string name="tab_text_2">Party</string>
     <string name="stock_name">Create Group:</string>
     <string name="group_name">Group Name</string>
+    <string name="party_name">Party name</string>
+    <string name="party_number">Party number</string>
+    <string name="select_unit">Select Unit</string>
+    <string name="add_item">Add Item</string>
+    <string name="groups">Group</string>
 </resources>

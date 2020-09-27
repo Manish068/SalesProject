@@ -26,33 +26,22 @@ tools:context=".view.activity.ItemDetailActivity">
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="@dimen/_5sdp"
                 android:fontFamily="@font/montserrat"
-                android:text="Groups:"
+                android:text="@string/groups"
                 android:textStyle="bold"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/_14sdp" />
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/GroupCardView"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:elevation="1dp"
-                app:cardCornerRadius="10dp"
-                app:strokeWidth="1dp"
-                app:strokeColor="@android:color/black"
-                android:innerRadius="0dp"
-                android:shape="ring"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:layout_marginEnd="@dimen/_5sdp"
-                android:layout_marginStart="@dimen/_5sdp"
-                >
-                <Spinner
-                    android:id="@+id/Group_spinner"
+                <EditText
+                    android:id="@+id/inputGroupName"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingLeft="10dp"
-                    />
-            </com.google.android.material.card.MaterialCardView>
-
+                    android:layout_height="@dimen/_40sdp"
+                    android:background="@drawable/edittext_background"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:padding="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:inputType="text"
+                    android:textAlignment="textStart"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:autofillHints="" />
 
             <TextView
                 android:id="@+id/textViewItemName"
@@ -62,7 +51,7 @@ tools:context=".view.activity.ItemDetailActivity">
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="@dimen/_5sdp"
                 android:fontFamily="@font/montserrat"
-                android:text="Add Item:"
+                android:text="@string/add_item"
                 android:textStyle="bold"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/_14sdp" />
@@ -87,32 +76,20 @@ tools:context=".view.activity.ItemDetailActivity">
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="@dimen/_5sdp"
                 android:fontFamily="@font/montserrat"
-                android:text="Select Unit"
+                android:text="@string/select_unit"
                 android:textStyle="bold"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/_14sdp" />
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/yourcardid"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:elevation="1dp"
-                app:cardCornerRadius="10dp"
-                app:strokeWidth="1dp"
-                app:strokeColor="@android:color/black"
-                android:innerRadius="0dp"
-                android:shape="ring"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:layout_marginEnd="@dimen/_5sdp"
-                android:layout_marginStart="@dimen/_5sdp"
-                >
                 <Spinner
-                    android:id="@+id/spinner_services"
+                    android:id="@+id/spinnerItemUnit"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingLeft="10dp"
+                    android:paddingStart="10dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginTop="30dp"
                     />
-            </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
 
 
@@ -120,20 +97,13 @@ tools:context=".view.activity.ItemDetailActivity">
         android:id="@+id/DoneButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Done"
-        android:fontFamily="sans-serif-medium"
-        android:includeFontPadding="false"
-        app:cornerRadius="@dimen/_10sdp"
-        android:onClick="DoneAddItem"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="@dimen/_20sdp"
-        android:layout_marginEnd="@dimen/_20sdp"
-        android:layout_marginStart="@dimen/_20sdp"
         android:layout_below="@+id/FirstLayout"
-        android:layout_marginTop="@dimen/_150sdp"/>
-
+        android:fontFamily="sans-serif-medium"
+        android:layout_centerVertical="true"
+        android:includeFontPadding="false"
+        android:onClick="DoneAddItem"
+        android:text="Done"
+        app:cornerRadius="@dimen/_10sdp" />
 
 
 </RelativeLayout>

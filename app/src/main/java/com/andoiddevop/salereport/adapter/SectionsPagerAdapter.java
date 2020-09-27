@@ -1,4 +1,4 @@
-package com.andoiddevop.salereport.ui.main;
+package com.andoiddevop.salereport.adapter;
 
 import android.content.Context;
 
