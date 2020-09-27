@@ -35,8 +35,8 @@ public class ItemDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_item_detail);
         ButterKnife.bind(this);
 
-        GName =(TextView)findViewById(R.id.inputGroupName);
-        GItemName =(TextView) findViewById(R.id.inputItemName);
+        GName =findViewById(R.id.inputGroupName);
+        GItemName = findViewById(R.id.inputItemName);
         spinnerItemUnit = findViewById(R.id.spinnerItemUnit);
         DoneButton = findViewById(R.id.DoneButton);
 
@@ -64,9 +64,9 @@ public class ItemDetailActivity extends AppCompatActivity {
     }
 
     private void addGroup(){
-        String groupName = GName.getText().toString();
-        String groupItemName = GItemName.getText().toString();
-        String unit = spinnerItemUnit.getSelectedItem().toString();
+        String groupName = (GName.getText().toString()).toLowerCase();
+        String groupItemName = (GItemName.getText().toString()).toLowerCase();
+        String unit = (spinnerItemUnit.getSelectedItem().toString()).toLowerCase();
 
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();

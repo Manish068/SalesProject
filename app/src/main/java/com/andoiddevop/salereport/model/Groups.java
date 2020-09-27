@@ -1,38 +1,38 @@
 package com.andoiddevop.salereport.model;
 
 public class Groups {
-    String groupName, itemName , unit ;
+    String product_group_name, product_group_Item_name, product_Item_unit;
 
     public Groups() {
     }
 
-    public Groups(String groupName, String itemName, String unit) {
-        this.groupName = groupName;
-        this.itemName = itemName;
-        this.unit = unit;
+    public Groups(String product_group_name, String product_group_Item_name, String product_Item_unit) {
+        this.product_group_name = product_group_name;
+        this.product_group_Item_name = product_group_Item_name;
+        this.product_Item_unit = product_Item_unit;
     }
 
-    public String getGroupName() {
-        return groupName;
+    public String getProduct_group_name() {
+        return product_group_name;
     }
 
-    public void setGroupName(String groupName) {
-        this.groupName = groupName;
+    public void setProduct_group_name(String product_group_name) {
+        this.product_group_name = product_group_name;
     }
 
-    public String getItemName() {
-        return itemName;
+    public String getProduct_group_Item_name() {
+        return product_group_Item_name;
     }
 
-    public void setItemName(String itemName) {
-        this.itemName = itemName;
+    public void setProduct_group_Item_name(String product_group_Item_name) {
+        this.product_group_Item_name = product_group_Item_name;
     }
 
-    public String getUnit() {
-        return unit;
+    public String getProduct_Item_unit() {
+        return product_Item_unit;
     }
 
-    public void setUnit(String unit) {
-        this.unit = unit;
+    public void setProduct_Item_unit(String product_Item_unit) {
+        this.product_Item_unit = product_Item_unit;
     }
 }

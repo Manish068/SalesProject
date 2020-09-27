@@ -33,9 +33,7 @@ public class CustomDialog extends DialogFragment{
                 .setPositiveButton("Done", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        String PartyName = editTextPartyName.getText().toString();
-                        String PartyNumber = editTextPartyNumber.getText().toString();
-                        customDialogListener.applyTexts(PartyName,PartyNumber);
+
 
                     }
                 })
@@ -45,10 +43,31 @@ public class CustomDialog extends DialogFragment{
                         dialog.dismiss();
                     }
                 });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(editTextPartyName.getText().toString().isEmpty() || editTextPartyNumber.getText().toString().isEmpty()){
+                    Toast.makeText(getActivity(),"Please enter all the details",Toast.LENGTH_SHORT).show();
+                }else{
+                    String PartyName = editTextPartyName.getText().toString();
+                    String PartyNumber = editTextPartyNumber.getText().toString();
+                    customDialogListener.applyTexts(PartyName,PartyNumber);
+
+                    Toast.makeText(getActivity(),"Party Details stored",Toast.LENGTH_SHORT).show();
+                    dialog.dismiss();
+                }
+            }
+        });
+
+
         editTextPartyName = view.findViewById(R.id.inputPartyName);
         editTextPartyNumber = view.findViewById(R.id.inputPartyNumber);
 
-        return builder.create();
+
+        return dialog;
     }
 
     @Override
