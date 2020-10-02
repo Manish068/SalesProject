@@ -32,12 +32,13 @@ public class Fragment1 extends Fragment {
     private ArrayList<Groups> groupsArrayList;
     private RecyclerView groupRecyclerView;
 
-
+// this is the tab1 ofname
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View view =  inflater.inflate(R.layout.fragment1_layout,container,false);
+
 
         groupRecyclerView = view.findViewById(R.id.recyclerViewGroupItem);
         groupRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -45,6 +46,8 @@ public class Fragment1 extends Fragment {
 
         database = FirebaseDatabase.getInstance();
         GroupRef = database.getReference("Groups");
+        groupRecyclerAdapter = new GroupRecyclerAdapter(groupsArrayList, getActivity());
+        groupRecyclerView.setAdapter(groupRecyclerAdapter);
 
         GroupRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -56,8 +59,7 @@ public class Fragment1 extends Fragment {
                         group.setProduct_group_Item_name(snap.getValue(Groups.class).getProduct_group_Item_name());
                         group.setProduct_Item_unit(snap.getValue(Groups.class).getProduct_Item_unit());
                         groupsArrayList.add(group);
-                        groupRecyclerAdapter = new GroupRecyclerAdapter(groupsArrayList, getActivity());
-                        groupRecyclerView.setAdapter(groupRecyclerAdapter);
+                        groupRecyclerAdapter.notifyDataSetChanged();
                     }
                 }
             }
