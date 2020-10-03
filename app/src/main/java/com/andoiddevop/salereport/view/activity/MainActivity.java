@@ -34,5 +34,14 @@ public class MainActivity extends AppCompatActivity {
             overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
         });
 
+        buttonSales.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent SalesActivity = new Intent(MainActivity.this, BillingActivity.class);
+                startActivity(SalesActivity);
+                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
+            }
+        });
+
     }
 }

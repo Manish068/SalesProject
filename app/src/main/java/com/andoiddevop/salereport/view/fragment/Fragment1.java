@@ -49,6 +49,8 @@ public class Fragment1 extends Fragment {
         groupRecyclerAdapter = new GroupRecyclerAdapter(groupsArrayList, getActivity());
         groupRecyclerView.setAdapter(groupRecyclerAdapter);
 
+
+
         GroupRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -69,7 +71,6 @@ public class Fragment1 extends Fragment {
                 Log.w("USER", "onCancelled: ",error.toException());
             }
         });
-
 
         return view;
     }

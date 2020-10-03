@@ -12,6 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:fullBackupContent="true">
+        <activity
+            android:name=".view.activity.BillingActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
         <activity android:name=".view.activity.ItemDetailActivity"/>
         <activity
             android:name=".view.activity.MasterActivity"
