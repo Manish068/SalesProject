@@ -2,6 +2,8 @@ package com.andoiddevop.salereport.view.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,9 +16,11 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.andoiddevop.salereport.R;
+import com.andoiddevop.salereport.adapter.NewItemRecyclerAdapter;
 import com.andoiddevop.salereport.model.Billing;
 import com.andoiddevop.salereport.model.Groups;
 import com.andoiddevop.salereport.model.Users;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -34,7 +38,9 @@ public class BillingActivity extends AppCompatActivity {
     ValueEventListener listener;
     ArrayAdapter<String> adapter1,adapter2;
     ArrayList<String> spinnerDataList1,spinnerDataList2;
-    FloatingActionButton add_more_items;
+    MaterialButton add_more_items,printBillButton;
+    RecyclerView newItemRecyclerView;
+    NewItemRecyclerAdapter newItemRecyclerAdapter;
 
 
     @Override
@@ -47,6 +53,9 @@ public class BillingActivity extends AppCompatActivity {
         purches_quantity = findViewById(R.id.inputQuintity);
         purches_item_price =findViewById(R.id.inputPrice);
         add_more_items = findViewById(R.id.AddItem);
+        newItemRecyclerView  = findViewById(R.id.newItemRecyclerView);
+        printBillButton  = findViewById(R.id.printBill_Button);
+
 
         databaseReference1 = FirebaseDatabase.getInstance().getReference("Users");
         databaseReference2 = FirebaseDatabase.getInstance().getReference("Groups");
@@ -66,13 +75,22 @@ public class BillingActivity extends AppCompatActivity {
         add_more_items.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                upload_data();
+                openAddNewItemLayout();
+                printBillButton.setVisibility(View.GONE);
+             //   upload_data();
             }
         });
 
     }
 
-    private void upload_data() {
+    private void openAddNewItemLayout() {
+        newItemRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        newItemRecyclerAdapter = new NewItemRecyclerAdapter(this);
+        newItemRecyclerView.setAdapter(newItemRecyclerAdapter);
+
+    }
+
+    /*private void upload_data() {
         String party_name1 = party_name.getSelectedItem().toString();
         String purches_item_name1 = purches_item_name.getSelectedItem().toString();
         String selected_item_quantity1 = purches_quantity.getText().toString();
@@ -96,7 +114,7 @@ public class BillingActivity extends AppCompatActivity {
         }
 
     }
-
+*/
     public  void retriveData(){
 
         listener = databaseReference1.child("parties").addValueEventListener(new ValueEventListener() {

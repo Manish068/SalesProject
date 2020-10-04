@@ -1,82 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.activity.BillingActivity">
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/header_card"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="@dimen/_5sdp"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginEnd="@dimen/_5sdp"
-        android:backgroundTint="#EBEBEB"
-        app:cardCornerRadius="@dimen/_10sdp"
-        app:cardElevation="@dimen/_5sdp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/textViewUnit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:fontFamily="@font/montserrat"
-                android:text="Party Name"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/_14sdp"
-                android:textStyle="bold" />
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:layout_marginBottom="@dimen/_10sdp"
-                android:shape="ring"
-                app:cardCornerRadius="10dp"
-                app:strokeColor="@android:color/darker_gray"
-                app:strokeWidth="1dp">
-
-                <Spinner
-                    android:id="@+id/spinnerPartyName"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_40sdp" />
-
-            </com.google.android.material.card.MaterialCardView>
-        </LinearLayout>
-
-    </com.google.android.material.card.MaterialCardView>
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <View
         android:id="@+id/seperator_view"
         android:layout_width="@dimen/_1sdp"
         android:layout_height="@dimen/_10sdp"
-        android:layout_below="@id/header_card"
-        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
         android:background="@android:color/darker_gray" />
 
     <com.google.android.material.card.MaterialCardView
@@ -232,19 +164,6 @@
         </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/newItemRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/middle_card_view"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentEnd="true"
-                />
-
-        </RelativeLayout>
-
-    </ScrollView>
 
 
-
- </RelativeLayout>
+</RelativeLayout>
