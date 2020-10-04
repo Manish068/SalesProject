@@ -83,7 +83,8 @@
                     android:background="@drawable/edittext_background"
                     android:inputType="text"
                     android:padding="@dimen/_10sdp"
-                    android:textAlignment="textStart" />
+                    android:textAlignment="textStart"
+                    android:autofillHints="" />
 
                 <TextView
                     android:id="@+id/textViewUnit"
@@ -119,12 +120,11 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_10sdp"
                         android:layout_marginEnd="@dimen/_10sdp"
-                        android:drawableLeft="@drawable/ic_add"
+                        android:drawableStart="@drawable/ic_add"
                         android:drawableTint="@android:color/white"
                         android:fontFamily="sans-serif-medium"
                         android:includeFontPadding="false"
-                        android:text="Add More"
-                        android:onClick="AddNewItem"
+                        android:text="@string/add_more"
                         app:cornerRadius="@dimen/_10sdp" />
 
                     <com.google.android.material.button.MaterialButton
@@ -135,7 +135,7 @@
                         android:fontFamily="sans-serif-medium"
                         android:includeFontPadding="false"
                         android:onClick="DoneAddItem"
-                        android:text="Done"
+                        android:text="@string/done"
                         android:layout_marginEnd="@dimen/_10sdp"
                         app:cornerRadius="@dimen/_10sdp" />
 
