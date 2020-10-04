@@ -15,4 +15,6 @@
     <string name="select_unit">Select Unit</string>
     <string name="add_item">Add Item</string>
     <string name="groups">Group</string>
+    <string name="add_more">Add More</string>
+    <string name="done">Done</string>
 </resources>

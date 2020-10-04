@@ -1,5 +1,6 @@
 package com.andoiddevop.salereport.view.activity;
 
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -16,12 +17,14 @@ import com.andoiddevop.salereport.Listener.AddMoreLayoutListener;
 import com.andoiddevop.salereport.R;
 import com.andoiddevop.salereport.adapter.AddItemLayoutAdapter;
 import com.andoiddevop.salereport.model.CardCount;
+import com.andoiddevop.salereport.model.DatabaseHelper;
 import com.andoiddevop.salereport.model.Groups;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -86,21 +89,24 @@ public class ItemDetailActivity extends AppCompatActivity implements AddMoreLayo
         String groupItemName = (GItemName.getText().toString()).toLowerCase();
         String unit = (spinnerItemUnit.getSelectedItem().toString()).toLowerCase();
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("Groups");
-       /* final DatabaseReference RootRef;
-        RootRef = FirebaseDatabase.getInstance().getReference("Groups");
-       */
-        if (!TextUtils.isEmpty(groupName) && !(TextUtils.isEmpty(groupItemName))) {
-
-            Groups groups = new Groups(groupName, groupItemName, unit);
-            myRef.child(groupName).child(groupItemName).setValue(groups);
-            Toast.makeText(this, "Group Created", Toast.LENGTH_LONG).show();
+        Groups groups;
+        try{
+            groups = new Groups(-1,groupName, groupItemName, unit);
+            Toast.makeText(this, groups.toString(), Toast.LENGTH_LONG).show();
             onBackPressed();
 
-        } else {
-            Toast.makeText(this, "You should enter group name and Item", Toast.LENGTH_LONG).show();
         }
+        catch (Exception e){
+            Toast.makeText(this, "You should enter group name and Item", Toast.LENGTH_LONG).show();
+            groups = new Groups(-1,"error","error","error");
+
+        }
+
+        DatabaseHelper databaseHelper = new DatabaseHelper(ItemDetailActivity.this);
+
+        boolean success = databaseHelper.addOne(groups);
+
+        Toast.makeText(ItemDetailActivity.this,"Success" + success , Toast.LENGTH_SHORT).show();
     }
 
     public void AddNewItem(View view) {
@@ -114,4 +120,6 @@ public class ItemDetailActivity extends AppCompatActivity implements AddMoreLayo
         cardCountArrayList.add(cardCount);
         addItemLayoutAdapter.notifyDataSetChanged();
     }
+
+
 }
