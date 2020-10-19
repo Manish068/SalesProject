@@ -1,27 +1,22 @@
-package com.andoiddevop.salereport.view.activity;
+package com.andoiddevop.salereport.view.activity.BillingActivity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.andoiddevop.salereport.R;
-import com.andoiddevop.salereport.adapter.NewItemRecyclerAdapter;
-import com.andoiddevop.salereport.model.Billing;
+import com.andoiddevop.salereport.view.activity.adapter.NewItemRecyclerAdapter;
 import com.andoiddevop.salereport.model.Groups;
 import com.andoiddevop.salereport.model.Users;
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

@@ -1,12 +1,10 @@
-package com.andoiddevop.salereport.view.activity;
+package com.andoiddevop.salereport.view.activity.ItemDetailActivity;
 
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,16 +12,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.andoiddevop.salereport.Listener.AddMoreLayoutListener;
 import com.andoiddevop.salereport.R;
-import com.andoiddevop.salereport.adapter.AddItemLayoutAdapter;
+import com.andoiddevop.salereport.view.activity.adapter.AddItemLayoutAdapter;
 import com.andoiddevop.salereport.model.CardCount;
-import com.andoiddevop.salereport.model.Groups;
+import com.andoiddevop.salereport.database.DatabaseHelper;
 import com.google.android.material.button.MaterialButton;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class ItemDetailActivity extends AppCompatActivity implements AddMoreLayoutListener {
@@ -59,8 +54,13 @@ public class ItemDetailActivity extends AppCompatActivity implements AddMoreLayo
 
         DoneButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                addGroup();
+            public void onClick(View view)
+            {
+                String groupName = (GName.getText().toString()).toLowerCase();
+                String groupItemName = (GItemName.getText().toString()).toLowerCase();
+                String unit = (spinnerItemUnit.getSelectedItem().toString()).toLowerCase();
+
+                addGroup(groupName,groupItemName,unit);
             }
         });
 
@@ -79,28 +79,14 @@ public class ItemDetailActivity extends AppCompatActivity implements AddMoreLayo
     public void onBackPressed() {
         super.onBackPressed();
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+        finish();
     }
 
-    private void addGroup() {
-        String groupName = (GName.getText().toString()).toLowerCase();
-        String groupItemName = (GItemName.getText().toString()).toLowerCase();
-        String unit = (spinnerItemUnit.getSelectedItem().toString()).toLowerCase();
-
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("Groups");
-       /* final DatabaseReference RootRef;
-        RootRef = FirebaseDatabase.getInstance().getReference("Groups");
-       */
-        if (!TextUtils.isEmpty(groupName) && !(TextUtils.isEmpty(groupItemName))) {
-
-            Groups groups = new Groups(groupName, groupItemName, unit);
-            myRef.child(groupName).child(groupItemName).setValue(groups);
-            Toast.makeText(this, "Group Created", Toast.LENGTH_LONG).show();
-            onBackPressed();
-
-        } else {
-            Toast.makeText(this, "You should enter group name and Item", Toast.LENGTH_LONG).show();
-        }
+    private void addGroup(String groupName, String groupItemName, String unit) {
+        String res = new DatabaseHelper(this).addGroupDetails(groupName,groupItemName,unit);
+        GName.getEditableText().clear();
+        GItemName.getEditableText().clear();
+        onBackPressed();
     }
 
     public void AddNewItem(View view) {

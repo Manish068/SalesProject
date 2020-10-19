@@ -3,28 +3,112 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/User_cardView"
     app:cardCornerRadius="@dimen/_10sdp"
     android:paddingBottom="@dimen/_10sdp"
     android:layout_marginTop="@dimen/_10sdp"
+    android:layout_marginEnd="@dimen/_5sdp"
+    android:layout_marginStart="@dimen/_5sdp"
     app:cardElevation="@dimen/_10sdp">
 
+
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:paddingBottom="@dimen/_10sdp"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/_5sdp">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        >
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/_20sdp"
+        app:cardElevation="@dimen/_5sdp"
+        android:layout_margin="@dimen/_5sdp">
+
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/textFirstChar"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:background="@drawable/background_user_icon"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:includeFontPadding="false"
+            android:textAllCaps="true"
+            android:textSize="@dimen/_22ssp"
+             />
+
+    </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/party_name"
-            android:textSize="@dimen/_16ssp"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:textColor="@android:color/black"
-            android:id="@+id/textViewPartyName"
-            android:padding="@dimen/_2sdp"
-            />
+            app:layout_constraintBottom_toTopOf="@+id/MinimiseLayout"
+            app:layout_constraintTop_toTopOf="@+id/MinimiseLayout">
+
+            <TextView
+                android:id="@+id/textViewPartyName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_2sdp"
+                android:text="@string/party_name"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_16ssp"
+                android:layout_margin="@dimen/_10sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+
+            <ImageView
+                android:id="@+id/ExpandLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:src="@drawable/ic_navigate_next"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/MinimiseLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:src="@drawable/ic_arrow_down"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/ExpandableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
 
         <TextView
             android:id="@+id/textViewPartyNumber"
@@ -32,10 +116,31 @@
             android:layout_height="wrap_content"
             android:text="@string/party_number"
             android:textSize="@dimen/_14ssp"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_10sdp"
             android:padding="@dimen/_2sdp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="@dimen/_55sdp"
+            android:layout_marginTop="@dimen/_5sdp"
             />
 
+        <TextView
+            android:id="@+id/textViewPartyAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/party_address"
+            android:textSize="@dimen/_14ssp"
+            android:padding="@dimen/_2sdp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/textViewPartyNumber"
+            android:layout_marginStart="@dimen/_55sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            />
+
+    </RelativeLayout>
     </LinearLayout>
+
+
 </com.google.android.material.card.MaterialCardView>

@@ -4,50 +4,69 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="@dimen/_10sdp"
-    android:paddingBottom="@dimen/_10sdp"
     android:layout_marginTop="@dimen/_10sdp"
+    android:layout_marginStart="@dimen/_5sdp"
+    android:layout_marginEnd="@dimen/_5sdp"
     app:cardElevation="@dimen/_10sdp">
 
     <LinearLayout
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:paddingBottom="@dimen/_10sdp"
         android:layout_height="wrap_content">
 
-        <TextView
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Group Name"
-            android:textSize="@dimen/_16ssp"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:textColor="@android:color/black"
-            android:id="@+id/textViewGroupName"
-            android:padding="@dimen/_2sdp"
-            />
-
+            android:layout_gravity="center"
+            >
         <TextView
             android:id="@+id/textViewGroupItemName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Group ItemName"
             android:textSize="@dimen/_14ssp"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_10sdp"
             android:padding="@dimen/_2sdp"
+            android:layout_marginStart="@dimen/_5sdp"
             />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/textViewUnitName"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Unit"
-            android:textSize="@dimen/_14ssp"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:padding="@dimen/_2sdp"
-            />
+            android:orientation="horizontal"
+            android:gravity="end"
+            >
 
+            <ImageView
+                android:id="@+id/iv_information"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_information"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                />
 
+            <ImageView
+                android:id="@+id/iv_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_edit"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                />
+
+            <ImageView
+                android:id="@+id/iv_remove"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_delete"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                />
+
+        </LinearLayout>
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

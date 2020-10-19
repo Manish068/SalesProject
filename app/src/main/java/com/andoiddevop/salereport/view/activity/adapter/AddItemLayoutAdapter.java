@@ -1,4 +1,4 @@
-package com.andoiddevop.salereport.adapter;
+package com.andoiddevop.salereport.view.activity.adapter;
 
 import android.content.Context;
 import android.util.Log;
@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -17,12 +16,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.andoiddevop.salereport.Listener.AddMoreLayoutListener;
 import com.andoiddevop.salereport.R;
 import com.andoiddevop.salereport.model.CardCount;
-import com.andoiddevop.salereport.view.activity.ItemDetailActivity;
 import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
-
-import butterknife.BindView;
 
 public class AddItemLayoutAdapter extends RecyclerView.Adapter<AddItemLayoutAdapter.ViewHolder> {
 

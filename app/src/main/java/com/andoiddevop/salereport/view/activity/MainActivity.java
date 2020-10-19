@@ -8,6 +8,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.andoiddevop.salereport.R;
+import com.andoiddevop.salereport.view.activity.BillingActivity.BillingActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
         buttonMaster.setOnClickListener(v -> {
 
-            Intent MasterActivity = new Intent(MainActivity.this, MasterActivity.class);
+            Intent MasterActivity = new Intent(MainActivity.this, com.andoiddevop.salereport.view.activity.MasterActivity.MasterActivity.class);
             startActivity(MasterActivity);
             overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
         });

@@ -13,12 +13,12 @@
         android:theme="@style/AppTheme"
         android:fullBackupContent="true">
         <activity
-            android:name=".view.activity.BillingActivity"
+            android:name=".view.activity.BillingActivity.BillingActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity android:name=".view.activity.ItemDetailActivity"/>
+        <activity android:name=".view.activity.ItemDetailActivity.ItemDetailActivity"/>
         <activity
-            android:name=".view.activity.MasterActivity"
+            android:name=".view.activity.MasterActivity.MasterActivity"
             android:label="@string/title_activity_master"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".view.activity.MainActivity">

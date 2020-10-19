@@ -1,4 +1,4 @@
-package com.andoiddevop.salereport.adapter;
+package com.andoiddevop.salereport.view.activity.adapter;
 
 import android.content.Context;
 import android.util.Log;
@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.andoiddevop.salereport.R;
 import com.andoiddevop.salereport.model.Groups;
-import com.andoiddevop.salereport.view.activity.BillingActivity;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

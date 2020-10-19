@@ -20,6 +20,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 public class CustomDialog extends DialogFragment{
     private EditText editTextPartyName;
     private EditText editTextPartyNumber;
+    private EditText editTextPartyAddress;
     private CustomDialogListener customDialogListener;
     @NonNull
     @Override
@@ -54,7 +55,8 @@ public class CustomDialog extends DialogFragment{
                 }else{
                     String PartyName = editTextPartyName.getText().toString();
                     String PartyNumber = editTextPartyNumber.getText().toString();
-                    customDialogListener.applyTexts(PartyName,PartyNumber);
+                    String PartyAddress = editTextPartyAddress.getText().toString();
+                    customDialogListener.applyTexts(PartyName,PartyNumber,PartyAddress);
 
                     Toast.makeText(getActivity(),"Party Details stored",Toast.LENGTH_SHORT).show();
                     dialog.dismiss();
@@ -65,6 +67,7 @@ public class CustomDialog extends DialogFragment{
 
         editTextPartyName = view.findViewById(R.id.inputPartyName);
         editTextPartyNumber = view.findViewById(R.id.inputPartyNumber);
+        editTextPartyAddress = view.findViewById(R.id.inputPartyAddress);
 
 
         return dialog;
@@ -82,6 +85,6 @@ public class CustomDialog extends DialogFragment{
     }
 
     public interface CustomDialogListener{
-        void applyTexts(String partyname,String partynumber);
+        void applyTexts(String partyname,String partynumber,String partyAddress);
     }
 }

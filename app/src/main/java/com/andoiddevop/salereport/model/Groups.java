@@ -12,9 +12,13 @@ public class Groups {
         this.product_Item_unit = product_Item_unit;
     }
 
+    public Groups(String product_group_Item_name) {
+        this.product_group_Item_name=product_group_Item_name;
+    }
+
     public String getProduct_group_name() {
         return product_group_name;
-    }//whre3 is your activitis
+    }
 
     public void setProduct_group_name(String product_group_name) {
         this.product_group_name = product_group_name;

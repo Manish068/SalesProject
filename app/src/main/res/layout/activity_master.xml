@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.activity.MasterActivity">
+    tools:context=".view.activity.MasterActivity.MasterActivity">
 
 
     <com.google.android.material.appbar.AppBarLayout
@@ -57,65 +57,9 @@
         app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_add" />
+        app:srcCompat="@drawable/ic_add"
+        />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/GroupFab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/_16sdp"
-        android:layout_marginBottom="@dimen/_30sdp"
-        android:backgroundTint="@color/colorButtonMaster"
-        android:visibility="invisible"
-        app:fabSize="mini"
-        app:layout_constraintBottom_toTopOf="@+id/MainFab"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_open_box" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/ItemFab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/_16sdp"
-        android:layout_marginBottom="@dimen/_16sdp"
-        android:backgroundTint="@color/colorButtonMaster"
-        android:visibility="invisible"
-        app:fabSize="mini"
-        app:layout_constraintBottom_toTopOf="@+id/GroupFab"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/list" />
-
-    <TextView
-        android:id="@+id/CreateGroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/_10sdp"
-        android:background="@drawable/fab_text_bg"
-        android:paddingStart="@dimen/_16sdp"
-        android:paddingTop="@dimen/_8sdp"
-        android:paddingEnd="@dimen/_16sdp"
-        android:paddingBottom="@dimen/_8sdp"
-        android:text="Create Group"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/GroupFab"
-        app:layout_constraintEnd_toStartOf="@+id/GroupFab"
-        app:layout_constraintTop_toTopOf="@+id/GroupFab" />
-
-    <TextView
-        android:id="@+id/AddItem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/_10sdp"
-        android:background="@drawable/fab_text_bg"
-        android:fontFamily="@font/raleway_semibold"
-        android:paddingStart="@dimen/_16sdp"
-        android:paddingTop="@dimen/_8sdp"
-        android:paddingEnd="@dimen/_16sdp"
-        android:paddingBottom="@dimen/_8sdp"
-        android:text="Add Item"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/ItemFab"
-        app:layout_constraintEnd_toStartOf="@+id/ItemFab"
-        app:layout_constraintTop_toTopOf="@+id/ItemFab" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

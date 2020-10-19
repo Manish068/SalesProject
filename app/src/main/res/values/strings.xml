@@ -15,4 +15,5 @@
     <string name="select_unit">Select Unit</string>
     <string name="add_item">Add Item</string>
     <string name="groups">Group</string>
+    <string name="party_address">Party Address</string>
 </resources>

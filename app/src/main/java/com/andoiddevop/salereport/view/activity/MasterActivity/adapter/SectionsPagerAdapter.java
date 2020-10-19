@@ -1,4 +1,4 @@
-package com.andoiddevop.salereport.adapter;
+package com.andoiddevop.salereport.view.activity.MasterActivity.adapter;
 
 import android.content.Context;
 

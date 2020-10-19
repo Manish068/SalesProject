@@ -1,10 +1,11 @@
 package com.andoiddevop.salereport.view.fragment;
 
+import android.database.Cursor;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,67 +13,57 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.andoiddevop.salereport.Listener.DeleteITem;
 import com.andoiddevop.salereport.R;
-import com.andoiddevop.salereport.adapter.GroupRecyclerAdapter;
+import com.andoiddevop.salereport.view.fragment.adapter.GroupRecyclerAdapter;
+import com.andoiddevop.salereport.database.DatabaseHelper;
 import com.andoiddevop.salereport.model.Groups;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class Fragment1 extends Fragment {
+public class Fragment1 extends Fragment implements DeleteITem {
 
-    private FirebaseDatabase database ;
-    private DatabaseReference GroupRef;
+    private ArrayList<Groups> dataHolder;
+    private GroupRecyclerAdapter adapter;
 
-    private GroupRecyclerAdapter groupRecyclerAdapter;
-    private ArrayList<Groups> groupsArrayList;
-    private RecyclerView groupRecyclerView;
-
-// this is the tab1 ofname
+    // this is the tab1 of name
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view =  inflater.inflate(R.layout.fragment1_layout,container,false);
+        View view = inflater.inflate(R.layout.fragment1_layout, container, false);
 
-
-        groupRecyclerView = view.findViewById(R.id.recyclerViewGroupItem);
+        RecyclerView groupRecyclerView = view.findViewById(R.id.recyclerViewGroupItem);
         groupRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        groupsArrayList = new ArrayList<>();
+        dataHolder = new ArrayList<>();
 
-        database = FirebaseDatabase.getInstance();
-        GroupRef = database.getReference("Groups");
-        groupRecyclerAdapter = new GroupRecyclerAdapter(groupsArrayList, getActivity());
-        groupRecyclerView.setAdapter(groupRecyclerAdapter);
+        Cursor cursor = new DatabaseHelper(getActivity()).readGroupItemsData();
 
+        while(cursor.moveToNext()){
 
+            Groups obj=new Groups(cursor.getString(0));
+            dataHolder.add(obj);
+        }
 
-        GroupRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot snapshot1 : snapshot.getChildren()) { //Rice->basmati
-                    for (DataSnapshot snap : snapshot1.getChildren()) {
-                        Groups group = new Groups();
-                        group.setProduct_group_name(snap.getValue(Groups.class).getProduct_group_name());
-                        group.setProduct_group_Item_name(snap.getValue(Groups.class).getProduct_group_Item_name());
-                        group.setProduct_Item_unit(snap.getValue(Groups.class).getProduct_Item_unit());
-                        groupsArrayList.add(group);
-                        groupRecyclerAdapter.notifyDataSetChanged();
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Log.w("USER", "onCancelled: ",error.toException());
-            }
-        });
+        adapter = new GroupRecyclerAdapter(dataHolder, getActivity(), this);
+        groupRecyclerView.setAdapter(adapter);
 
         return view;
+    }
+
+    @Override
+    public void onClickDeleteItem(int position) {
+        DatabaseHelper databaseHelper = new DatabaseHelper(getActivity());
+        databaseHelper.removeItem(position);
+        adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onUpdateIdItem() {
+        DatabaseHelper databaseHelper = new DatabaseHelper(getActivity());
+        if(databaseHelper.update()){
+            Toast.makeText(getActivity(),"Updated",Toast.LENGTH_LONG).show();
+        }
     }
 
 
